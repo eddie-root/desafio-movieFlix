@@ -1,10 +1,10 @@
-package com.example.movieflix;
+package com.example.eddmeDev.dsMovieflix;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MovieflixApplicationTests {
+class DsMovieflixApplicationTests {
 
 	@Test
 	void contextLoads() {
