@@ -1,5 +1,8 @@
 package com.eddmeDev.DSmovieflix.entities;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,19 +12,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name = "tb_movie")
-public class Movie {
+public class Movie implements Serializable {
+    private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private String subTitle;
-	private String year;
+	private Integer year;
 	private String imgUrl;
 	
 	@Column(length = 1000)
@@ -30,11 +35,14 @@ public class Movie {
 	@ManyToOne
 	@JoinColumn(name = "genre_id")
 	private Genre genre;
+	
+	@OneToMany(mappedBy = "movie")
+	private List<Review> reviews = new ArrayList<>();
 
 	public Movie() {
 	}
 	
-	public Movie(Long id, String title, String subTitle, String year, String imgUrl, String synopsis, Genre genre) {
+	public Movie(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, Genre genre) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -43,6 +51,15 @@ public class Movie {
 		this.imgUrl = imgUrl;
 		this.synopsis = synopsis;
 		this.genre = genre;
+	}
+
+	public Movie(String title, String subTitle, String imgUrl, String synopsis, Integer year, Genre genre) {
+		this.title = title;
+        this.subTitle = subTitle;
+        this.imgUrl = imgUrl;
+        this.synopsis = synopsis;
+        this.year = year;
+        this.genre = genre;
 	}
 
 	public Long getId() {
@@ -69,11 +86,11 @@ public class Movie {
 		this.subTitle = subTitle;
 	}
 
-	public String getYear() {
+	public Integer getYear() {
 		return year;
 	}
 
-	public void setYear(String year) {
+	public void setYear(Integer year) {
 		this.year = year;
 	}
 
@@ -99,6 +116,14 @@ public class Movie {
 
 	public void setGenre(Genre genre) {
 		this.genre = genre;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 
 	@Override
