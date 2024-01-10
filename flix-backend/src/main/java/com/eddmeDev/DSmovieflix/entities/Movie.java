@@ -1,42 +1,48 @@
-package com.example.eddmeDev.dsMovieflix.entities;
+package com.eddmeDev.DSmovieflix.entities;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "tb_movie")
-public class Movie implements Serializable{
-	private static final long serialVersionUID = 1L;
-	
+public class Movie {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private String subTitle;
+	private String year;
 	private String imgUrl;
 	
 	@Column(length = 1000)
 	private String synopsis;
-	private Integer year;
 	
+	@ManyToOne
+	@JoinColumn(name = "genre_id")
+	private Genre genre;
+
 	public Movie() {
 	}
 	
-	public Movie(Long id, String title, String subTitle, String imgUrl, String synopsis, Integer year) {
+	public Movie(Long id, String title, String subTitle, String year, String imgUrl, String synopsis, Genre genre) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.subTitle = subTitle;
+		this.year = year;
 		this.imgUrl = imgUrl;
 		this.synopsis = synopsis;
-		this.year = year;
+		this.genre = genre;
 	}
 
 	public Long getId() {
@@ -63,6 +69,14 @@ public class Movie implements Serializable{
 		this.subTitle = subTitle;
 	}
 
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
 	public String getImgUrl() {
 		return imgUrl;
 	}
@@ -79,12 +93,12 @@ public class Movie implements Serializable{
 		this.synopsis = synopsis;
 	}
 
-	public Integer getYear() {
-		return year;
+	public Genre getGenre() {
+		return genre;
 	}
 
-	public void setYear(Integer year) {
-		this.year = year;
+	public void setGenre(Genre genre) {
+		this.genre = genre;
 	}
 
 	@Override
@@ -105,5 +119,6 @@ public class Movie implements Serializable{
 	}
 	
 	
-
+	
+	
 }

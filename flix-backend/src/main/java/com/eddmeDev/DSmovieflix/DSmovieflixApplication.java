@@ -1,13 +1,13 @@
-package com.example.eddmeDev.dsMovieflix;
+package com.eddmeDev.DSmovieflix;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DsMovieflixApplication {
+public class DSmovieflixApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DsMovieflixApplication.class, args);
+		SpringApplication.run(DSmovieflixApplication.class, args);
 	}
 
 }
