@@ -1,25 +1,27 @@
-package com.eddmeDev.DSmovieflix.entities;
+package com.example.datamovieflix.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_role")
-public class Role {
+public class Role implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String authority;
 	
 	public Role() {
 	}
-	
+
 	public Role(Long id, String authority) {
-		super();
 		this.id = id;
 		this.authority = authority;
 	}
@@ -39,8 +41,6 @@ public class Role {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-
-	
 	
 	
 	

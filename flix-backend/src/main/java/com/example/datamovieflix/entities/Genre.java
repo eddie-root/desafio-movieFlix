@@ -1,34 +1,28 @@
-package com.eddmeDev.DSmovieflix.entities;
+package com.example.datamovieflix.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_genre")
-public class Genre {
-
+public class Genre implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
 	
-	@OneToMany(mappedBy = "genre")
-	private List<Movie> movies = new ArrayList<>();
-
 	public Genre() {
 	}
 	
 	public Genre(Long id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}
@@ -49,14 +43,6 @@ public class Genre {
 		this.name = name;
 	}
 
-	public List<Movie> getMovies() {
-		return movies;
-	}
-
-	public void setMovies(List<Movie> movies) {
-		this.movies = movies;
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -74,6 +60,5 @@ public class Genre {
 		return Objects.equals(id, other.id);
 	}
 	
-		
 	
 }
