@@ -79,12 +79,28 @@ public class Movie implements Serializable {
 		this.synopsis = synopsis;
 	}
 
-	public Integer getMyear() {
+	public Integer getmYear() {
 		return mYear;
 	}
 
-	public void setMyear(Integer myear) {
-		this.mYear = myear;
+	public void setmYear(Integer mYear) {
+		this.mYear = mYear;
+	}
+
+	public Genre getGenre() {
+		return genre;
+	}
+
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
+
+	public Set<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(Set<Review> reviews) {
+		this.reviews = reviews;
 	}
 
 	
