@@ -12,18 +12,19 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_genre")
-public class Genre implements Serializable{
-	private static final long serialVersionUID = 1L;
-	
+public class Genre implements Serializable {
+    private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	
+
 	@OneToMany(mappedBy = "genre")
 	private Set<Movie> movies;
 	
 	public Genre() {
+		super();
 	}
 
 	public Long getId() {
@@ -46,10 +47,6 @@ public class Genre implements Serializable{
 		return movies;
 	}
 
-	public void setMovies(Set<Movie> movies) {
-		this.movies = movies;
-	}
-
 	
-
+	
 }

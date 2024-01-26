@@ -7,18 +7,17 @@ public class UserDTO {
 	private Long id;
 	private String name;
 	private String email;
-	private String password;
+	
 	
 	public UserDTO() {
 		super();
 	}
 
-	public UserDTO(Long id, String name, String email, String password) {
+	public UserDTO(Long id, String name, String email) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
-		this.password = password;
 	}
 	
 
@@ -26,7 +25,6 @@ public class UserDTO {
 		id = entity.getId();
 		name = entity.getName();
 		email = entity.getEmail();
-		password = entity.getPassword();
 	}
 
 	public Long getId() {
@@ -53,13 +51,7 @@ public class UserDTO {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	
 	
 	
 	
