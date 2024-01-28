@@ -21,6 +21,13 @@ public class GenreDTO {
 		id = genre.getId();
 		name = genre.getName();
 	}
+	
+	
+	public Genre toEntity() {
+		// TODO Auto-generated method stub
+		return new Genre(this.id, this.name);
+	}
+	
 
 	public Long getId() {
 		return id;
@@ -37,6 +44,7 @@ public class GenreDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+
     
 	
     

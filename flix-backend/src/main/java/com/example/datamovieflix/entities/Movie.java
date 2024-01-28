@@ -38,6 +38,17 @@ public class Movie implements Serializable {
 	public Movie() {
 		super();
 	}
+	
+	public Movie(String title, String subTitle, String imgUrl, String synopsis, Integer mYear, Genre genre) {
+		this.title = title;
+		this.subTitle = subTitle;
+		this.imgUrl = imgUrl;
+		this.synopsis = synopsis;
+		this.mYear = mYear;
+		this.genre = genre;
+	}
+
+
 
 	public Long getId() {
 		return id;

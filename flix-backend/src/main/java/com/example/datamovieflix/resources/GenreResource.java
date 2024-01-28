@@ -1,4 +1,4 @@
-package com.example.datamovieflix.controllers;
+package com.example.datamovieflix.resources;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import com.example.datamovieflix.services.GenreService;
 
 @RestController
 @RequestMapping("/genres")
-public class GenreController {
+public class GenreResource {
 
 	@Autowired
 	private GenreService genreService;

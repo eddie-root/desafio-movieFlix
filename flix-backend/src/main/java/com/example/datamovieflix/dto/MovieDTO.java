@@ -9,7 +9,7 @@ public class MovieDTO {
     private String subTitle;
     private String imgUrl;
     private String synopsis;
-    private Integer year;
+    private Integer mYear;
     
     private GenreDTO genre;
 
@@ -17,7 +17,7 @@ public class MovieDTO {
 		super();
 	}
 
-	public MovieDTO(Long id, String title, String subTitle, String imgUrl, String synopsis, Integer year,
+	public MovieDTO(Long id, String title, String subTitle, String imgUrl, String synopsis, Integer mYear,
 			GenreDTO genre) {
 		super();
 		this.id = id;
@@ -25,7 +25,7 @@ public class MovieDTO {
 		this.subTitle = subTitle;
 		this.imgUrl = imgUrl;
 		this.synopsis = synopsis;
-		this.year = year;
+		this.mYear = mYear;
 		this.genre = genre;
 	}
 
@@ -35,8 +35,22 @@ public class MovieDTO {
 		this.subTitle = movie.getSubTitle();
 		this.imgUrl = movie.getImgUrl();
 		this.synopsis = movie.getSynopsis();
-		this.year = movie.getmYear();
+		this.mYear = movie.getmYear();
 		this.genre = new GenreDTO(movie.getGenre());
+	}
+	
+	public Movie toEntity() {
+		return new Movie(
+				this.title,
+				this.subTitle,
+				this.imgUrl,
+				this.synopsis,
+				this.mYear,
+				this.genre == null ? null : this.genre.toEntity());
+	}
+	
+	public void getMovieId(Long id) {
+		this.id = id;
 	}
 
 	public Long getId() {
@@ -79,12 +93,13 @@ public class MovieDTO {
 		this.synopsis = synopsis;
 	}
 
-	public Integer getYear() {
-		return year;
+	
+	public Integer getmYear() {
+		return mYear;
 	}
 
-	public void setYear(Integer year) {
-		this.year = year;
+	public void setmYear(Integer mYear) {
+		this.mYear = mYear;
 	}
 
 	public GenreDTO getGenre() {

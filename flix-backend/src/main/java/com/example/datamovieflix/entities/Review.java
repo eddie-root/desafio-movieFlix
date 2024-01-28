@@ -36,11 +36,11 @@ public class Review implements Serializable{
 		super();
 	}
 
-	public Review(Long id, String text, User user) {
+	public Review(Long id, String text, User user, Movie movie) {
 		super();
 		this.id = id;
 		this.text = text;
-
+		this.movie = movie;
 		this.user = user;
 	}
 
@@ -67,6 +67,14 @@ public class Review implements Serializable{
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
 	
 	
